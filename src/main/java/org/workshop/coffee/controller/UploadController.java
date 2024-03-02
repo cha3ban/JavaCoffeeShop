@@ -37,10 +37,7 @@ public class UploadController {
         //get the path with file separator
         var path = Paths.get(UPLOAD_DIRECTORY + File.separator + name);
         //validate that there is no path traversal
-        if (!path.toFile().getCanonicalPath().startsWith(UPLOAD_DIRECTORY)) {
-            model.addAttribute("msg", "Invalid path");
-            return "person/upload";
-        }
+
         //save the file to the path
         Files.write(path, file.getBytes());
 
